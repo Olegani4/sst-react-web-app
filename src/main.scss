@@ -1,0 +1,16 @@
+// Base styles
+@use './styles/fonts';
+@use './styles/base';
+@use './styles/variables';
+@use './styles/typography';
+
+// Components styles
+@use './components/Header/header.module';
+@use './components/About/about.module';
+@use './components/FlightsSchedule/flights-schedule.module';
+@use './components/Footer/footer.module';
+@use './components/Gallery/gallery.module';
+@use './components/MiniGame/mini-game.module';
+@use './components/PlanetOverview/planet-overview.module';
+@use './components/PlanetsRoutes/planets-routes.module';
+@use './components/ServiceOverview/service-overview.module';

@@ -1,0 +1,151 @@
+// Mixins for typography
+@mixin heading-1 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-regular);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+@mixin heading-2 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-regular);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+@mixin heading-3 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-regular);
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+
+@mixin heading-4 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-regular);
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+@mixin body-large {
+  font-family: var(--font-body);
+  font-weight: var(--font-regular);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+@mixin body-regular {
+  font-family: var(--font-body);
+  font-weight: var(--font-regular);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@mixin body-small {
+  font-family: var(--font-body);
+  font-weight: var(--font-regular);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@mixin caption {
+  font-family: var(--font-accent);
+  font-weight: var(--font-medium);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Button and accent text styles
+@mixin button-text {
+  font-family: var(--font-accent);
+  font-weight: var(--font-medium);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+@mixin accent-text {
+  font-family: var(--font-accent);
+  font-weight: var(--font-medium);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+// Utility classes for styling
+.heading-1 {
+  @include heading-1;
+}
+
+.heading-2 {
+  @include heading-2;
+}
+
+.heading-3 {
+  @include heading-3;
+}
+
+.heading-4 {
+  @include heading-4;
+}
+
+.body-large {
+  @include body-large;
+}
+
+.body-regular {
+  @include body-regular;
+}
+
+.body-small {
+  @include body-small;
+}
+
+.caption {
+  @include caption;
+}
+
+.button-text {
+  @include button-text;
+}
+
+.accent-text {
+  @include accent-text;
+}
+
+// Space theme specific text styles
+.space-title {
+  @include heading-1;
+  background: linear-gradient(135deg, #e94560, #0f3460);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.planet-name {
+  @include heading-3;
+  color: #e94560;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
+}
+
+.flight-info {
+  @include body-regular;
+  color: #ffffff;
+  font-weight: var(--font-medium);
+}
+
+// Button styles
+.btn-primary {
+  @include button-text;
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-secondary {
+  @include button-text;
+  font-weight: var(--font-medium);
+} 

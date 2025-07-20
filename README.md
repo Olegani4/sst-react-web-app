@@ -30,7 +30,7 @@ A single-page React web application that simulates space tourism across our sola
 - **Space Theme**: Dark blue to purple gradient backgrounds
 - **UI**: Clean, futuristic interface design
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack ds
 
 - **Frontend Framework**: React 19.1.0
 - **Build Tool**: Vite 7.0.4

@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 0;
+    font-family: "Poppins", sans-serif;
+    -webkit-border-radius: 0;
+}
+
+html {
+    font-size: 62.5%;   // 1rem = 10px
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+    font-size: 1.6rem;
+}
+
+textarea {
+    resize: none;
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+    overflow: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+input {
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+    border: none;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+
+}
+
+img{
+    user-select: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+section {
+    min-height: 15rem;  // TODO: remove after adding content
+}
