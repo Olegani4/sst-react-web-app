@@ -1,13 +1,13 @@
-import Header from './components/Header/Header';
-import ServiceOverview from './components/ServiceOverview/ServiceOverview';
-import PlanetsRoutes from './components/PlanetsRoutes/PlanetsRoutes';
-import PlanetOverview from './components/PlanetOverview/PlanetOverview';
-import FlightsSchedule from './components/FlightsSchedule/FlightSchedule';
-import Gallery from './components/Gallery/Gallery';
-import MiniGame from './components/MiniGame/MiniGame';
-import About from './components/About/About';
-import Footer from './components/Footer/Footer';
+import Header from './components/layout/Header/Header';
+import Footer from './components/layout/Footer/Footer';
 
+import ServiceOverview from './components/sections/ServiceOverview/ServiceOverview';
+import PlanetsRoutes from './components/sections/PlanetsRoutes/PlanetsRoutes';
+import PlanetOverview from './components/sections/PlanetOverview/PlanetOverview';
+import FlightsSchedule from './components/sections/FlightsSchedule/FlightSchedule';
+import Gallery from './components/sections/Gallery/Gallery';
+import MiniGame from './components/sections/MiniGame/MiniGame';
+import About from './components/sections/About/About';
 
 function App() {
   return (

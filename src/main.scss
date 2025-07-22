@@ -1,16 +1,23 @@
-// Base styles
+//* Base styles *//
 @use './styles/fonts';
 @use './styles/base';
 @use './styles/variables';
 @use './styles/typography';
 
-// Components styles
-@use './components/Header/header.module';
-@use './components/About/about.module';
-@use './components/FlightsSchedule/flights-schedule.module';
-@use './components/Footer/footer.module';
-@use './components/Gallery/gallery.module';
-@use './components/MiniGame/mini-game.module';
-@use './components/PlanetOverview/planet-overview.module';
-@use './components/PlanetsRoutes/planets-routes.module';
-@use './components/ServiceOverview/service-overview.module';
+//* Components styles *//
+
+// Layout
+@use './components/layout/Header/header.module';
+@use './components/layout/Footer/footer.module';
+
+// Sections
+@use './components/sections/About/about.module';
+@use './components/sections/FlightsSchedule/flights-schedule.module';
+@use './components/sections/Gallery/gallery.module';
+@use './components/sections/MiniGame/mini-game.module';
+@use './components/sections/PlanetOverview/planet-overview.module';
+@use './components/sections/PlanetsRoutes/planets-routes.module';
+@use './components/sections/ServiceOverview/service-overview.module';
+
+// UI
+@use './components/ui/Planet/planet.module';

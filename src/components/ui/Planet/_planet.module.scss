@@ -1,0 +1,18 @@
+.planet {
+    .planet__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        .planet__container-name {
+            user-select: none;
+        }
+
+        .planet__container-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

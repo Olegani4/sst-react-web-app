@@ -1,6 +1,6 @@
 function MiniGame() {
     return (
-        <section className="mini-game">
+        <section className="mini-game" id="mini-game-section">
             Mini Game section
         </section>
     )

@@ -1,0 +1,19 @@
+.service-overview {
+    background: #3C339A;
+    color: #fff;
+    margin-top: 11.175rem;
+
+    .service-overview__container {
+        padding: 4rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        h1, 
+        h2,
+        h3 {
+            text-align: center;
+        }
+    }
+}

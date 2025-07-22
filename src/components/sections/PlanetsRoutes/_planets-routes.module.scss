@@ -1,0 +1,80 @@
+@use 'sass:list';
+
+.planets-routes {
+    background: linear-gradient(180deg, rgba(60, 51, 154, 1) 0%, rgba(69, 85, 168, 1) 100%);
+    color: #fff;
+    position: relative;
+
+    .planets-routes__container {
+        padding: 4rem 2rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .planets-routes__container-planets {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            .route-svg {
+                overflow: visible;
+            }
+
+            .planet {
+                z-index: 100;
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform-origin: center bottom;
+                transition: transform 0.3s ease-in-out;
+
+                // Planet positions map
+                $planet-positions: (
+                    "mercury": (-400px, 200px),
+                    "venus": (-280px, 120px),
+                    "mars": (-160px, 70px),
+                    "jupiter": (0, 0),
+                    "saturn": (160px, 70px),
+                    "uranus": (280px, 120px),
+                    "neptune": (400px, 200px)
+                );
+
+                @each $planet, $position in $planet-positions {
+                    &[id="#{$planet}"] {
+                        transform: translate(-50%, 0) translate(list.nth($position, 1), list.nth($position, 2));
+
+                        &:hover {
+                            transform: translate(-50%, 0) translate(list.nth($position, 1), list.nth($position, 2)) scale(1.2);
+                        }
+
+                        &:active {
+                            // opacity: 0.8;
+                        }
+
+                        &.planet--active {
+                            transform: translate(-50%, 0) translate(list.nth($position, 1), list.nth($position, 2)) scale(1.2);
+                        }
+                    }
+                }
+
+                &.planet--active {
+                    z-index: 10;
+                }
+            }
+        }
+
+        .planets-routes__container-start-planet {
+            margin-top: -10rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+}

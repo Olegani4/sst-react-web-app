@@ -78,50 +78,51 @@ section {
 .heading-2 {
   font-family: var(--font-heading);
   font-weight: var(--font-regular);
-  font-size: 2.5rem;
+  font-size: 3rem;
   line-height: 1.2;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
 .heading-3 {
   font-family: var(--font-heading);
   font-weight: var(--font-regular);
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   line-height: 1.3;
+  letter-spacing: 0.02em;
 }
 
 .heading-4 {
   font-family: var(--font-heading);
   font-weight: var(--font-regular);
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   line-height: 1.4;
 }
 
 .body-large {
   font-family: var(--font-body);
   font-weight: var(--font-regular);
-  font-size: 1.125rem;
+  font-size: 2rem;
   line-height: 1.6;
 }
 
 .body-regular {
   font-family: var(--font-body);
   font-weight: var(--font-regular);
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1.6;
 }
 
 .body-small {
   font-family: var(--font-body);
   font-weight: var(--font-regular);
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: 1.5;
 }
 
 .caption {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -130,7 +131,7 @@ section {
 .button-text {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
 }
@@ -138,7 +139,7 @@ section {
 .accent-text {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 1rem;
+  font-size: 1.4rem;
   line-height: 1.5;
 }
 
@@ -157,8 +158,9 @@ section {
 .planet-name {
   font-family: var(--font-heading);
   font-weight: var(--font-regular);
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   line-height: 1.3;
+  letter-spacing: 0.02em;
   color: #e94560;
   text-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
 }
@@ -166,7 +168,7 @@ section {
 .flight-info {
   font-family: var(--font-body);
   font-weight: var(--font-regular);
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   color: #ffffff;
   font-weight: var(--font-medium);
@@ -175,7 +177,7 @@ section {
 .btn-primary {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   font-weight: var(--font-bold);
@@ -186,21 +188,23 @@ section {
 .btn-secondary {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   font-weight: var(--font-medium);
 }
 
 .header {
-  background: #3C339A;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #3c339a;
+  z-index: 1000000;
 }
 .header .header__container {
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 1rem 2rem 1rem 1rem;
   gap: 0.25rem;
 }
 .header .header__container .header__logo {
@@ -209,11 +213,64 @@ section {
   justify-content: center;
 }
 .header .header__container .header__logo img {
-  height: 5rem;
+  height: 6rem;
 }
 .header .header__container .header__slogan .header__slogan-text {
   color: #eee;
   user-select: none;
+}
+.header .header__container-flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.header .header__container-flex-col .header__logo {
+  animation: slideToCenter 0.5s ease-out;
+}
+.header .header__container-flex-col .header__slogan {
+  animation: slideToCenter 0.5s ease-out;
+}
+.header .header__container-flex-sb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 10px 0 rgba(60, 51, 154, 0.1);
+}
+.header .header__container-flex-sb .header__logo {
+  animation: slideToLeft 0.5s ease-out;
+}
+.header .header__container-flex-sb .header__slogan {
+  animation: slideToRight 0.5s ease-out;
+}
+
+@keyframes slideToLeft {
+  0% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideToRight {
+  0% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideToCenter {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.footer {
+  background: linear-gradient(180deg, rgb(90, 121, 200) 0%, rgb(75, 86, 177) 8%, rgb(60, 51, 154) 100%);
+  color: #fff;
 }
 
 .about {
@@ -223,11 +280,6 @@ section {
 
 .flight-schedule {
   background: linear-gradient(180deg, rgb(95, 183, 207) 0%, rgb(166, 211, 223) 76%, rgb(238, 238, 238) 100%);
-  color: #fff;
-}
-
-.footer {
-  background: linear-gradient(180deg, rgb(90, 121, 200) 0%, rgb(75, 86, 177) 8%, rgb(60, 51, 154) 100%);
   color: #fff;
 }
 
@@ -249,11 +301,140 @@ section {
 .planets-routes {
   background: linear-gradient(180deg, rgb(60, 51, 154) 0%, rgb(69, 85, 168) 100%);
   color: #fff;
+  position: relative;
+}
+.planets-routes .planets-routes__container {
+  padding: 4rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .route-svg {
+  overflow: visible;
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet {
+  z-index: 100;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: center bottom;
+  transition: transform 0.3s ease-in-out;
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=mercury] {
+  transform: translate(-50%, 0) translate(-400px, 200px);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=mercury]:hover {
+  transform: translate(-50%, 0) translate(-400px, 200px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=mercury].planet--active {
+  transform: translate(-50%, 0) translate(-400px, 200px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=venus] {
+  transform: translate(-50%, 0) translate(-280px, 120px);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=venus]:hover {
+  transform: translate(-50%, 0) translate(-280px, 120px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=venus].planet--active {
+  transform: translate(-50%, 0) translate(-280px, 120px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=mars] {
+  transform: translate(-50%, 0) translate(-160px, 70px);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=mars]:hover {
+  transform: translate(-50%, 0) translate(-160px, 70px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=mars].planet--active {
+  transform: translate(-50%, 0) translate(-160px, 70px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=jupiter] {
+  transform: translate(-50%, 0) translate(0, 0);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=jupiter]:hover {
+  transform: translate(-50%, 0) translate(0, 0) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=jupiter].planet--active {
+  transform: translate(-50%, 0) translate(0, 0) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=saturn] {
+  transform: translate(-50%, 0) translate(160px, 70px);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=saturn]:hover {
+  transform: translate(-50%, 0) translate(160px, 70px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=saturn].planet--active {
+  transform: translate(-50%, 0) translate(160px, 70px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=uranus] {
+  transform: translate(-50%, 0) translate(280px, 120px);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=uranus]:hover {
+  transform: translate(-50%, 0) translate(280px, 120px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=uranus].planet--active {
+  transform: translate(-50%, 0) translate(280px, 120px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=neptune] {
+  transform: translate(-50%, 0) translate(400px, 200px);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=neptune]:hover {
+  transform: translate(-50%, 0) translate(400px, 200px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet[id=neptune].planet--active {
+  transform: translate(-50%, 0) translate(400px, 200px) scale(1.2);
+}
+.planets-routes .planets-routes__container .planets-routes__container-planets .planet.planet--active {
+  z-index: 10;
+}
+.planets-routes .planets-routes__container .planets-routes__container-start-planet {
+  margin-top: -10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .service-overview {
   background: #3C339A;
   color: #fff;
+  margin-top: 11.175rem;
+}
+.service-overview .service-overview__container {
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.service-overview .service-overview__container h1,
+.service-overview .service-overview__container h2,
+.service-overview .service-overview__container h3 {
+  text-align: center;
+}
+
+.planet .planet__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.planet .planet__container .planet__container-name {
+  user-select: none;
+}
+.planet .planet__container .planet__container-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=index.css.map */

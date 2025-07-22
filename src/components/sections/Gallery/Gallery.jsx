@@ -1,6 +1,6 @@
 function Gallery() {
     return (
-        <section className="gallery">
+        <section className="gallery" id="gallery-section">
             Gallery section
         </section>
     )
