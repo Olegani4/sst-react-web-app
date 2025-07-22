@@ -1,40 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { flights } from '../../../utils/mockdata/flights-data';
 
 function FlightSchedule() {
     const [selectedFlights, setSelectedFlights] = useState([]);
     const [seatsPerFlight, setSeatsPerFlight] = useState({});
 
-    const flights = [
-        {
-            id: 1,
-            launchDate: "Aug 15, 2087",
-            departureStation: "Earth Orbital Station",
-            seatsLeft: 5,
-            price: 120
-        },
-        {
-            id: 2,
-            launchDate: "Nov 30, 2087",
-            departureStation: "Earth Spaceport Alpha",
-            seatsLeft: 12,
-            price: 105
-        },
-        {
-            id: 3,
-            launchDate: "Jan 10, 2088",
-            departureStation: "Earth Deep Launch",
-            seatsLeft: 8,
-            price: 130
-        },
-        {
-            id: 4,
-            launchDate: "Apr 22, 2088",
-            departureStation: "Earth Polar Platform",
-            seatsLeft: 3,
-            price: 115
-        }
-    ];
+
 
     const handleFlightSelect = (flight) => {
         setSelectedFlights(prev => {
@@ -144,84 +116,84 @@ function FlightSchedule() {
                         </div>
                     </div>
                     
-                    <div className="flight-schedule__selection">
-                        <div className="flight-schedule__selection-details">
-                            <h3 className='body-large'>Your Selection</h3>
-                            <div className='flight-schedule__selection-details-selected-cards'>
-                                <AnimatePresence>
-                                    {selectedFlights.map((flight, index) => (
-                                        <motion.div 
-                                            key={flight.id} 
-                                            className="selection-card"
-                                            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                                            exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                                            transition={{ 
-                                                duration: 0.3,
-                                                ease: "easeOut"
-                                            }}
-                                        >
-                                            <button 
-                                                className="close-btn" 
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    removeFlight(flight.id);
-                                                }}
-                                            >
-                                                ×
-                                            </button>
-                                            <div className="selection-info">
-                                                <div className='selection-info-header'>
-                                                    <p className='body-regular'>{flight.launchDate}</p>
-                                                    <p className='body-regular'>{flight.departureStation}</p>
-                                                </div>
-                                                <div className='selection-info-details'>
-                                                    <p className='body-small'>Price per seat:</p>
-                                                    <p className='body-small value'>{flight.price}</p>
-                                                    <p className='body-small'>Seats:</p>
-                                                    <p className='body-small value'>{seatsPerFlight[flight.id] || 1}</p>
-                                                </div>
-                                                
-                                                <div className="seats-control">
-                                                    <div className="seats-buttons">
-                                                        <button onClick={(e) => {
+                    <AnimatePresence>
+                        {selectedFlights.length > 0 && (
+                            <motion.div 
+                                className="flight-schedule__selection"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 20 }}
+                                transition={{ 
+                                    duration: 0.3,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <div className="flight-schedule__selection-details">
+                                    <h3 className='body-large'>Your Selection</h3>
+                                    <div className='flight-schedule__selection-details-selected-cards'>
+                                        <AnimatePresence>
+                                            {selectedFlights.map((flight, index) => (
+                                                <motion.div 
+                                                    key={flight.id} 
+                                                    className="selection-card"
+                                                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                                    exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                                                    transition={{ 
+                                                        duration: 0.3,
+                                                        ease: "easeOut"
+                                                    }}
+                                                >
+                                                    <button 
+                                                        className="close-btn" 
+                                                        onClick={(e) => {
                                                             e.stopPropagation();
-                                                            handleSeatsChange(flight.id, -1);
-                                                        }}>-</button>
-                                                        <button onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            handleSeatsChange(flight.id, 1);
-                                                        }}>+</button>
+                                                            removeFlight(flight.id);
+                                                        }}
+                                                    >
+                                                        ×
+                                                    </button>
+                                                    <div className="selection-info">
+                                                        <div className='selection-info-header'>
+                                                            <p className='body-regular'>{flight.launchDate}</p>
+                                                            <p className='body-regular'>{flight.departureStation}</p>
+                                                        </div>
+                                                        <div className='selection-info-details'>
+                                                            <p className='body-small'>Price per seat:</p>
+                                                            <p className='body-small value'>{flight.price}</p>
+                                                            <p className='body-small'>Seats:</p>
+                                                            <p className='body-small value'>{seatsPerFlight[flight.id] || 1}</p>
+                                                        </div>
+                                                        
+                                                        <div className="seats-control">
+                                                            <div className="seats-buttons">
+                                                                <button onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleSeatsChange(flight.id, -1);
+                                                                }}>-</button>
+                                                                <button onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleSeatsChange(flight.id, 1);
+                                                                }}>+</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </AnimatePresence>
-                            </div>
-                        </div>
-                        
-                        <div className="flight-schedule__total">
-                            <h3 className='body-large'>Total</h3>
-                            <div className="total-amount body-super-large">{totalPrice}</div>
-                            <AnimatePresence>
-                                {totalPrice > 0 && (
-                                    <motion.div 
-                                        className='pay-btn-container'
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 20 }}
-                                        transition={{ 
-                                            duration: 0.3,
-                                            ease: "easeOut"
-                                        }}
-                                    >
+                                                </motion.div>
+                                            ))}
+                                        </AnimatePresence>
+                                    </div>
+                                </div>
+                                
+                                <div className="flight-schedule__total">
+                                    <h3 className='body-large'>Total</h3>
+                                    <div className="total-amount body-super-large">{totalPrice}</div>
+                                    <div className='pay-btn-container'>
                                         <button className="pay-btn body-large">Pay</button>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 
                 </div>
             </div>

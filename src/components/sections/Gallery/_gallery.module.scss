@@ -1,5 +1,6 @@
 .gallery {
-    background: #ADD6E1;
+    background: linear-gradient(180deg,rgba(95, 183, 207, 1) 0%, rgba(166, 211, 223, 1) 76%, rgba(173, 214, 225, 1) 100%);
+    // background: #ADD6E1;
     color: #fff;
     padding: 6rem 2rem;
 
@@ -26,7 +27,7 @@
             .gallery__subtitle {
                 text-align: center;
                 margin-bottom: 3rem;
-                text-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.2);
+                text-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
             }
 
             .gallery__grid {

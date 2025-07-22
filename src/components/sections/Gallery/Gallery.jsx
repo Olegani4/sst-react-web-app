@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import lightbox from 'lightbox2';
 import 'lightbox2/dist/css/lightbox.min.css';
-import { galleryImages } from '../../../utils/gallery';
+import { galleryImages } from '../../../utils/mockdata/gallery';
 
 function Gallery() {
     useEffect(() => {

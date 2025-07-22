@@ -1,6 +1,6 @@
 import Planet from '../../ui/Planet/Planet';
 import earthImageSrc from '../../../assets/icons/planets/ico-earth.svg';
-import { planets } from '../../../utils/planets-data';
+import { planets } from '../../../utils/mockdata/planets-data';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 

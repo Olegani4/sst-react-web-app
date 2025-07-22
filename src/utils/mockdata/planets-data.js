@@ -1,11 +1,11 @@
-import unknownPlanetImageSrc from '../assets/icons/planets/ico-unknown-planet.svg';
-import mercuryImageSrc from '../assets/icons/planets/ico-mercury.svg';
-import venusImageSrc from '../assets/icons/planets/ico-venus.svg';
-import marsImageSrc from '../assets/icons/planets/ico-mars.svg';
-import jupiterImageSrc from '../assets/icons/planets/ico-jupiter.svg';
-import saturnImageSrc from '../assets/icons/planets/ico-saturn.svg';
-import uranusImageSrc from '../assets/icons/planets/ico-uranus.svg';
-import neptuneImageSrc from '../assets/icons/planets/ico-neptune.svg';
+import unknownPlanetImageSrc from '../../assets/icons/planets/ico-unknown-planet.svg';
+import mercuryImageSrc from '../../assets/icons/planets/ico-mercury.svg';
+import venusImageSrc from '../../assets/icons/planets/ico-venus.svg';
+import marsImageSrc from '../../assets/icons/planets/ico-mars.svg';
+import jupiterImageSrc from '../../assets/icons/planets/ico-jupiter.svg';
+import saturnImageSrc from '../../assets/icons/planets/ico-saturn.svg';
+import uranusImageSrc from '../../assets/icons/planets/ico-uranus.svg';
+import neptuneImageSrc from '../../assets/icons/planets/ico-neptune.svg';
 
 export const planets = [
     {

@@ -305,7 +305,7 @@ button {
 
 .flight-schedule {
   padding: 6rem 2rem;
-  background: linear-gradient(180deg, rgb(95, 183, 207) 0%, rgb(166, 211, 223) 76%, rgb(173, 214, 225) 100%);
+  background: rgb(95, 183, 207);
   color: #fff;
 }
 .flight-schedule .flight-schedule__container {
@@ -320,6 +320,7 @@ button {
   margin-bottom: 1rem;
 }
 .flight-schedule .flight-schedule__container .flight-schedule__header .flight-schedule__title {
+  padding-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -420,7 +421,7 @@ button {
   display: grid;
   grid-template-columns: 70% 30%;
   gap: 3rem;
-  margin: 3rem 0;
+  margin-top: 3rem;
   padding: 1.5rem;
 }
 .flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details {
@@ -532,7 +533,7 @@ button {
 }
 
 .gallery {
-  background: #ADD6E1;
+  background: linear-gradient(180deg, rgb(95, 183, 207) 0%, rgb(166, 211, 223) 76%, rgb(173, 214, 225) 100%);
   color: #fff;
   padding: 6rem 2rem;
 }
@@ -556,7 +557,7 @@ button {
 .gallery .gallery__container .gallery__content .gallery__subtitle {
   text-align: center;
   margin-bottom: 3rem;
-  text-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.2);
+  text-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 .gallery .gallery__container .gallery__content .gallery__grid {
   display: grid;
