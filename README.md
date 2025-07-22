@@ -90,8 +90,8 @@ sst-react-web-app/
 ## 🎯 Key Components to Implement
 
 ### Core Features
-- [ ] Planet selection interface with interactive icons
-- [ ] Planet detail cards with information display
+- [x] Planet selection interface with interactive icons
+- [x] Planet detail cards with information display
 - [ ] Flight schedule table with sorting and filtering
 - [ ] Booking system with seat selection and pricing
 - [ ] Image gallery with space-themed photos
@@ -99,7 +99,7 @@ sst-react-web-app/
 - [ ] Responsive design for mobile and desktop
 
 ### Technical Implementation
-- [ ] React components for each major section
+- [x] React components for each major section
 - [ ] State management for booking selections
 - [ ] SCSS styling with space theme
 - [ ] Interactive animations and transitions
@@ -117,9 +117,8 @@ This is a personal project for learning and practice, but suggestions and feedba
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 📞 Contact
+## 🧐 Author
 
-- **Creator**: Olegani4
 - **GitHub**: [Olegani4](https://github.com/Olegani4)
 
 ---
