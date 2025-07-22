@@ -12,7 +12,7 @@
   font-weight: var(--font-regular);
   font-size: 3rem;
   line-height: 1.2;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 
 @mixin heading-3 {
@@ -117,28 +117,16 @@
   @include accent-text;
 }
 
-// Space theme specific text styles
-.space-title {
-  @include heading-1;
-  background: linear-gradient(135deg, #e94560, #0f3460);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.planet-name {
-  @include heading-3;
-  color: #e94560;
-  text-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
-}
-
-.flight-info {
-  @include body-regular;
-  color: #ffffff;
-  font-weight: var(--font-medium);
-}
-
 // Button styles
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
 .btn-primary {
   @include button-text;
   font-weight: var(--font-bold);
@@ -150,3 +138,16 @@
   @include button-text;
   font-weight: var(--font-medium);
 } 
+
+.btn-anchor {
+  @include button-text;
+  font-weight: var(--font-medium);
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:active {
+    opacity: 0.7;
+  }
+}

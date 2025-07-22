@@ -1,34 +1,20 @@
 import Planet from '../../ui/Planet/Planet';
-import mercuryImageSrc from '../../../assets/icons/planets/ico-mercury.svg';
-import venusImageSrc from '../../../assets/icons/planets/ico-venus.svg';
 import earthImageSrc from '../../../assets/icons/planets/ico-earth.svg';
-import marsImageSrc from '../../../assets/icons/planets/ico-mars.svg';
-import jupiterImageSrc from '../../../assets/icons/planets/ico-jupiter.svg';
-import saturnImageSrc from '../../../assets/icons/planets/ico-saturn.svg';
-import uranusImageSrc from '../../../assets/icons/planets/ico-uranus.svg';
-import neptuneImageSrc from '../../../assets/icons/planets/ico-neptune.svg';
+import { planets } from '../../../utils/planets-data';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-function PlanetsRoutes() {
+function PlanetsRoutes({ setSelectedPlanet }) {
     const [activeRoute, setActiveRoute] = useState(null);
     const [lineCoords, setLineCoords] = useState(null);
-
-    const planets = [
-        {planetId: 'mercury', name: 'Mercury', imageSrc: mercuryImageSrc, planetSize: 50, distance: '0.77 b km', travelTime: '6 months'},
-        {planetId: 'venus', name: 'Venus', imageSrc: venusImageSrc, planetSize: 80, distance: '0.38 b km', travelTime: '4 months'},
-        {planetId: 'mars', name: 'Mars', imageSrc: marsImageSrc, planetSize: 60, distance: '0.78 b km', travelTime: '7 months'},
-        {planetId: 'jupiter', name: 'Jupiter', imageSrc: jupiterImageSrc, planetSize: 120, distance: '4.2 b km', travelTime: '1.5 years'},
-        {planetId: 'saturn', name: 'Saturn', imageSrc: saturnImageSrc, planetSize: 130, distance: '1.43 b km', travelTime: '2 years'},
-        {planetId: 'uranus', name: 'Uranus', imageSrc: uranusImageSrc, planetSize: 100, distance: '2.57 b km', travelTime: '3 years'},
-        {planetId: 'neptune', name: 'Neptune', imageSrc: neptuneImageSrc, planetSize: 90, distance: '4.3 b km', travelTime: '4 years'}
-    ];
 
     const handlePlanetClick = (planetId) => {
         if (planetId === activeRoute) {
             setActiveRoute(null);
+            setSelectedPlanet(null);
         } else {
             setActiveRoute(planetId);
+            setSelectedPlanet(planetId);
         }
     };
 
@@ -118,9 +104,10 @@ function PlanetsRoutes() {
     return (
         <>
             <section className="planets-routes" id="planets-routes-section">
+                <div id="planets-routes-section-start" style={{ position: 'absolute', top: '-11.2rem' }}></div>
                 <div className="planets-routes__container">
                     <div className="planets-routes__container-planets">
-                        {planets.map((planet) => (
+                        {planets.map((planet) => ( planet.planetId !== 'unknown' && (
                             <Planet 
                                 key={planet.name} 
                                 planetId={planet.planetId} 
@@ -130,7 +117,7 @@ function PlanetsRoutes() {
                                 isActive={activeRoute === planet.planetId}
                                 onPlanetClick={(planetId) => handlePlanetClick(planetId)}
                             />
-                        ))}
+                        )))}
                     </div>
 
                     <div className="planets-routes__container-start-planet">
