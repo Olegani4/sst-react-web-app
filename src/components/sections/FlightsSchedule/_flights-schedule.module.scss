@@ -1,4 +1,285 @@
 .flight-schedule {
-    background: linear-gradient(180deg,rgba(95, 183, 207, 1) 0%, rgba(166, 211, 223, 1) 76%, rgba(238, 238, 238, 1) 100%);
+    padding: 6rem 2rem;
+    background: linear-gradient(180deg,rgba(95, 183, 207, 1) 0%, rgba(166, 211, 223, 1) 76%, rgba(173, 214, 225, 1) 100%);
     color: #fff;
+
+    .flight-schedule__container {
+        // border: 0.1rem solid red;
+        max-width: 100rem;
+        margin: 0 auto;
+
+        .flight-schedule__header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+
+            .flight-schedule__title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+            }
+
+            .flight-schedule__buttons {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .flight-schedule__content {
+            .flight-schedule__content-table {                
+                table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    overflow: hidden;
+                    
+                    thead {
+                        background: rgba(255, 255, 255, 0.1);
+                        
+                        th {
+                            padding: 1.5rem;
+                            text-align: left;
+                            border-left: 0.1rem solid #fff;
+                            border-bottom: 0.1rem solid #fff;
+                            border-top: 0.1rem solid #fff;
+                            font-weight: 500;
+
+                            &:first-child {
+                                border-radius: 1rem 0 0 0;
+                            }
+
+                            &:last-child {
+                                border-radius: 0 1rem 0 0;
+                                border-right: 0.1rem solid #fff;
+                            }
+                        }
+                    }
+                    
+                    tbody {
+                        tr {
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+                            
+                            &:hover {
+                                background: rgba(255, 255, 255, 0.15);
+                            }
+                            
+                            &.selected {
+                                background: rgba(255, 255, 255, 0.25);
+                                border-left: 4px solid #fff;
+                            }
+                            
+                            td {
+                                padding: 1.5rem;
+                                border-bottom: 0.1rem solid #fff;
+                                border-left: 0.1rem solid #fff;
+                                &:last-child {
+                                    border-right: 0.1rem solid #fff;
+                                }
+                            }
+
+                            &:last-child {
+                                td {
+                                    &:first-child {
+                                        border-bottom-left-radius: 1rem;
+                                    }
+
+                                    &:last-child {
+                                        border-bottom-right-radius: 1rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .flight-schedule__pagination {
+                margin-top: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                .pagination-controls {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    
+                    .page {
+                        padding: 0.8rem 1.2rem;
+                        cursor: pointer;
+                        border-radius: 0.4rem;
+                        transition: background-color 0.3s ease;
+                        font-size: 1.3rem;
+                        
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.2);
+                        }
+                        
+                        &.active {
+                            background: rgba(255, 255, 255, 0.3);
+                        }
+                    }
+                    
+                    .next {
+                        margin-left: 1rem;
+                        padding: 0.8rem 1.2rem;
+                        cursor: pointer;
+                        border-radius: 0.4rem;
+                        transition: background-color 0.3s ease;
+                        font-size: 1.3rem;
+                        
+                        &:hover {
+                            background: rgba(255, 255, 255, 0.2);
+                        }
+                    }
+                }
+            }
+            
+            .flight-schedule__selection {
+                border-top: none;
+                display: grid;
+                grid-template-columns: 70% 30%;
+                gap: 3rem;
+                margin: 3rem 0;
+                padding: 1.5rem;
+                
+                .flight-schedule__selection-details {
+                    min-height: 23rem;
+
+                    .body-large {
+                        font-weight: 500;
+                        text-align: center;
+                    }
+                    
+                    .flight-schedule__selection-details-selected-cards {
+                        margin-top: 1rem;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 2rem;
+
+                        .selection-card {
+                            width: 20rem;
+                            background: rgba(255, 255, 255, 0.9);
+                            color: #7CC2D5;
+                            font-weight: 500;
+                            padding: 1rem 1.5rem;
+                            border-radius: 0.8rem;
+                            position: relative;
+                            
+                            .close-btn {
+                                user-select: none;
+                                position: absolute;
+                                top: 0.5rem;
+                                right: 1rem;
+                                background: none;
+                                border: none;
+                                font-size: 1.8rem;
+                                cursor: pointer;
+                                color: #7CC2D5;
+                                
+                                &:hover {
+                                    opacity: 0.7;
+                                }
+                            }
+                            
+                            .selection-info {
+                                p {
+                                    font-weight: 500;
+                                }
+
+                                .selection-info-header {
+                                    margin-top: 1rem;
+                                    text-align: center;
+                                }
+
+                                .selection-info-details {
+                                    margin-top: 1rem;
+                                    display: grid;
+                                    grid-template-columns: 2fr 1fr;
+                                    gap: 0.5rem;
+
+                                    .value {
+                                        text-align: right;
+                                    }
+                                }
+                                
+                                .seats-control {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    margin-top: 1.5rem;
+                                    
+                                    .seats-buttons {
+                                        width: 100%;
+                                        justify-content: center;
+                                        display: flex;
+                                        gap: 1rem;
+                                        
+                                        button {
+                                            user-select: none;
+                                            width: 3rem;
+                                            height: 3rem;
+                                            color: #fff;
+                                            background: #7FC3D6;
+                                            border-radius: 0.4rem;
+                                            cursor: pointer;
+                                            font-size: 1.4rem;
+                                            font-weight: bold;
+                                            
+                                            &:hover {
+                                                opacity: 0.8;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                .flight-schedule__total {
+                    .body-large {
+                        font-weight: 500;
+                        text-align: center;
+                    }
+                    
+                    .total-amount {
+                        font-weight: 500;
+                        margin-bottom: 2rem;
+                        text-align: center;
+                    }
+                    .pay-btn-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .pay-btn {
+                            background: transparent;
+                            border: 0.1rem solid #fff;
+                            color: #fff;
+                            padding: 0.5rem 6rem;
+                            border-radius: 1rem;
+                            cursor: pointer;
+                            // transition: background-color 0.3s ease;
+                            transition: all 0.3s ease-in-out;
+                            
+                            &:hover {
+                                background: #fff;
+                                color: #7CC2D5;
+                            }
+                        }
+                    }
+                }
+            }
+        
+        }
+    }
 }

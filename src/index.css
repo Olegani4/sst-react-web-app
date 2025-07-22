@@ -69,6 +69,7 @@ img {
 }
 
 button {
+  user-select: none;
   cursor: pointer;
 }
 
@@ -107,6 +108,13 @@ section {
   line-height: 1.4;
 }
 
+.body-super-large {
+  font-family: var(--font-body);
+  font-weight: var(--font-regular);
+  font-size: 2.5rem;
+  line-height: 1.6;
+}
+
 .body-large {
   font-family: var(--font-body);
   font-weight: var(--font-regular);
@@ -140,7 +148,7 @@ section {
 .button-text {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
 }
@@ -164,7 +172,7 @@ button {
 .btn-primary {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   font-weight: var(--font-bold);
@@ -175,7 +183,7 @@ button {
 .btn-secondary {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   font-weight: var(--font-medium);
@@ -184,7 +192,7 @@ button {
 .btn-anchor {
   font-family: var(--font-accent);
   font-weight: var(--font-medium);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.4;
   letter-spacing: 0.02em;
   font-weight: var(--font-medium);
@@ -195,6 +203,20 @@ button {
 }
 .btn-anchor:active {
   opacity: 0.7;
+}
+
+.btn-table {
+  font-family: var(--font-accent);
+  font-weight: var(--font-medium);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  font-weight: var(--font-medium);
+  color: #fff;
+  text-decoration: underline;
+}
+.btn-table:hover {
+  opacity: 0.8;
 }
 
 .header {
@@ -282,18 +304,241 @@ button {
 }
 
 .flight-schedule {
-  background: linear-gradient(180deg, rgb(95, 183, 207) 0%, rgb(166, 211, 223) 76%, rgb(238, 238, 238) 100%);
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, rgb(95, 183, 207) 0%, rgb(166, 211, 223) 76%, rgb(173, 214, 225) 100%);
   color: #fff;
+}
+.flight-schedule .flight-schedule__container {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__header .flight-schedule__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__header .flight-schedule__buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table thead {
+  background: rgba(255, 255, 255, 0.1);
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table thead th {
+  padding: 1.5rem;
+  text-align: left;
+  border-left: 0.1rem solid #fff;
+  border-bottom: 0.1rem solid #fff;
+  border-top: 0.1rem solid #fff;
+  font-weight: 500;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table thead th:first-child {
+  border-radius: 1rem 0 0 0;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table thead th:last-child {
+  border-radius: 0 1rem 0 0;
+  border-right: 0.1rem solid #fff;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr.selected {
+  background: rgba(255, 255, 255, 0.25);
+  border-left: 4px solid #fff;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr td {
+  padding: 1.5rem;
+  border-bottom: 0.1rem solid #fff;
+  border-left: 0.1rem solid #fff;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr td:last-child {
+  border-right: 0.1rem solid #fff;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 1rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__content-table table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 1rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination .pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination .pagination-controls .page {
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  transition: background-color 0.3s ease;
+  font-size: 1.3rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination .pagination-controls .page:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination .pagination-controls .page.active {
+  background: rgba(255, 255, 255, 0.3);
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination .pagination-controls .next {
+  margin-left: 1rem;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  transition: background-color 0.3s ease;
+  font-size: 1.3rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__pagination .pagination-controls .next:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection {
+  border-top: none;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 3rem;
+  margin: 3rem 0;
+  padding: 1.5rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details {
+  min-height: 23rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .body-large {
+  font-weight: 500;
+  text-align: center;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card {
+  width: 20rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #7CC2D5;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
+  position: relative;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .close-btn {
+  user-select: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #7CC2D5;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .close-btn:hover {
+  opacity: 0.7;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info p {
+  font-weight: 500;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .selection-info-header {
+  margin-top: 1rem;
+  text-align: center;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .selection-info-details {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0.5rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .selection-info-details .value {
+  text-align: right;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .seats-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .seats-control .seats-buttons {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .seats-control .seats-buttons button {
+  user-select: none;
+  width: 3rem;
+  height: 3rem;
+  color: #fff;
+  background: #7FC3D6;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__selection-details .flight-schedule__selection-details-selected-cards .selection-card .selection-info .seats-control .seats-buttons button:hover {
+  opacity: 0.8;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__total .body-large {
+  font-weight: 500;
+  text-align: center;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__total .total-amount {
+  font-weight: 500;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__total .pay-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__total .pay-btn-container .pay-btn {
+  background: transparent;
+  border: 0.1rem solid #fff;
+  color: #fff;
+  padding: 0.5rem 6rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.flight-schedule .flight-schedule__container .flight-schedule__content .flight-schedule__selection .flight-schedule__total .pay-btn-container .pay-btn:hover {
+  background: #fff;
+  color: #7CC2D5;
 }
 
 .gallery {
-  background: #EEE;
-  color: #000;
+  background: #ADD6E1;
+  color: #fff;
 }
 
 .mini-game {
-  background: linear-gradient(180deg, rgb(238, 238, 238) 0%, rgb(174, 228, 237) 100%);
-  color: #000;
+  background: linear-gradient(180deg, rgb(173, 214, 225) 0%, rgb(174, 228, 237) 100%);
+  color: #fff;
 }
 
 .planet-overview {
