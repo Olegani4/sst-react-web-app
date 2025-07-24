@@ -87,8 +87,6 @@
                         transition: opacity 0.3s ease;
 
                         .gallery__view-icon {
-                            font-size: 2rem;
-                            color: white;
                             background: rgba(0, 0, 0, 0.6);
                             border-radius: 50%;
                             width: 6rem;
@@ -97,6 +95,11 @@
                             align-items: center;
                             justify-content: center;
                             backdrop-filter: blur(0.5rem);
+
+                            img {
+                                width: 2.4rem;
+                                height: 2.4rem;
+                            }
                         }
                     }
                 }

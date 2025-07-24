@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import lightbox from 'lightbox2';
 import 'lightbox2/dist/css/lightbox.min.css';
 import { galleryImages } from '../../../utils/mockdata/gallery';
+import viewIcon from '../../../assets/icons/ui/ico-eye.svg';
 
 function Gallery() {
     useEffect(() => {
@@ -44,16 +45,18 @@ function Gallery() {
                                         loading="lazy"
                                     />
                                     <div className="gallery__overlay">
-                                        <span className="gallery__view-icon">👁️</span>
+                                        <span className="gallery__view-icon">
+                                            <img src={viewIcon} alt="view icon" draggable="false" />
+                                        </span>
                                     </div>
                                 </a>
                             </div>
                         ))}
                     </div>
                     
-                    <div className="gallery__view-more">
+                    {/* <div className="gallery__view-more">
                         <a href="#" className="gallery__view-more-link body-large">View more</a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

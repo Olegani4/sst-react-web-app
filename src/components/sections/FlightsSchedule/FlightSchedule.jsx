@@ -6,8 +6,6 @@ function FlightSchedule() {
     const [selectedFlights, setSelectedFlights] = useState([]);
     const [seatsPerFlight, setSeatsPerFlight] = useState({});
 
-
-
     const handleFlightSelect = (flight) => {
         setSelectedFlights(prev => {
             const isSelected = prev.find(f => f.id === flight.id);
