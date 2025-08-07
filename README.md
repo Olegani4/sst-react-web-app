@@ -79,11 +79,46 @@ sst-react-web-app/
 │   └── logo-sst.svg        # SST logo
 ├── src/                    # Source code
 │   ├── assets/             # Images and other assets
+│   │   ├── icons/          # SVG icons
+│   │   │   ├── contacts/   # Contact icons (email, figma, github)
+│   │   │   ├── logo/       # Logo variations
+│   │   │   ├── planets/    # Planet icons for all 8 planets
+│   │   │   └── ui/         # UI icons (eye, etc.)
+│   │   └── images/         # Image assets
+│   │       └── gallery/    # Gallery images
 │   ├── components/         # React components
+│   │   ├── layout/         # Layout components
+│   │   │   ├── Footer/     # Footer component
+│   │   │   └── Header/     # Header component
+│   │   ├── sections/       # Page sections
+│   │   │   ├── About/      # About section
+│   │   │   ├── FlightsSchedule/  # Flight booking
+│   │   │   ├── Gallery/    # Image gallery
+│   │   │   ├── MiniGame/   # Interactive quiz
+│   │   │   ├── PlanetOverview/  # Planet information
+│   │   │   ├── PlanetsRoutes/   # Planet selection
+│   │   │   └── ServiceOverview/ # Service information
+│   │   └── ui/             # Reusable UI components
+│   │       └── Planet/     # Planet component
+│   ├── styles/             # SCSS styles
+│   │   ├── _base.scss      # Base styles
+│   │   ├── _fonts.scss     # Font definitions
+│   │   ├── _typography.scss # Typography styles
+│   │   └── _variables.scss # SCSS variables
+│   ├── utils/              # Utility functions
+│   │   ├── api.js          # API utilities
+│   │   └── mockdata/       # Mock data
+│   │       ├── flights-data.js    # Flight information
+│   │       ├── gallery.js         # Gallery data
+│   │       ├── mini-game-questions.js  # Quiz questions
+│   │       └── planets-data.js    # Planet information
 │   ├── App.jsx             # Main application component
-│   └── main.jsx            # Application entry point
+│   ├── main.jsx            # Application entry point
+│   ├── main.scss           # Main SCSS file
+│   └── index.css           # Global styles
 ├── package.json            # Dependencies and scripts
-├── vite.config.js          # Vite configuration
+├── package-lock.json       # Lock file
+├── index.html              # HTML entry point
 └── README.md               # This file
 ```
 
@@ -92,7 +127,7 @@ sst-react-web-app/
 ### Core Features
 - [x] Planet selection interface with interactive icons
 - [x] Planet detail cards with information display
-- [ ] Flight schedule table with sorting and filtering
+- [x] Flight schedule table with sorting and filtering
 - [x] Booking system with seat selection and pricing
 - [x] Image gallery with space-themed photos
 - [ ] Planet knowledge quiz
@@ -100,8 +135,8 @@ sst-react-web-app/
 
 ### Technical Implementation
 - [x] React components for each major section
-- [ ] State management for booking selections
-- [ ] SCSS styling with space theme
+- [X] State management for booking selections
+- [X] SCSS styling with space theme
 - [ ] Interactive animations and transitions
 - [ ] Form validation for booking system
 
