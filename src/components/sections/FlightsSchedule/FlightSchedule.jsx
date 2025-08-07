@@ -7,14 +7,71 @@ function FlightSchedule() {
     const [seatsPerFlight, setSeatsPerFlight] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
     const [showSortModal, setShowSortModal] = useState(false);
+    const [showFilterModal, setShowFilterModal] = useState(false);
     const [sortConfig, setSortConfig] = useState({
         field: 'launchDate',
         direction: 'asc'
     });
+    const [tempSortConfig, setTempSortConfig] = useState({
+        field: 'launchDate',
+        direction: 'asc'
+    });
+    const [filterConfig, setFilterConfig] = useState({
+        departureStation: '',
+        priceRange: { min: '', max: '' },
+        seatsRange: { min: '', max: '' },
+        dateRange: { start: '', end: '' }
+    });
+    const [tempFilterConfig, setTempFilterConfig] = useState({
+        departureStation: '',
+        priceRange: { min: '', max: '' },
+        seatsRange: { min: '', max: '' },
+        dateRange: { start: '', end: '' }
+    });
     const flightsPerPage = 5;
 
+    // Filter flights
+    const filteredFlights = flights.filter(flight => {
+        // Filter by departure station
+        if (filterConfig.departureStation && 
+            !flight.departureStation.toLowerCase().includes(filterConfig.departureStation.toLowerCase())) {
+            return false;
+        }
+
+        // Filter by price range
+        if (filterConfig.priceRange.min && flight.price < Number(filterConfig.priceRange.min)) {
+            return false;
+        }
+        if (filterConfig.priceRange.max && flight.price > Number(filterConfig.priceRange.max)) {
+            return false;
+        }
+
+        // Filter by seats range
+        if (filterConfig.seatsRange.min && flight.seatsLeft < Number(filterConfig.seatsRange.min)) {
+            return false;
+        }
+        if (filterConfig.seatsRange.max && flight.seatsLeft > Number(filterConfig.seatsRange.max)) {
+            return false;
+        }
+
+        // Filter by date range
+        if (filterConfig.dateRange.start || filterConfig.dateRange.end) {
+            const flightDate = new Date(flight.launchDate);
+            if (filterConfig.dateRange.start) {
+                const startDate = new Date(filterConfig.dateRange.start);
+                if (flightDate < startDate) return false;
+            }
+            if (filterConfig.dateRange.end) {
+                const endDate = new Date(filterConfig.dateRange.end);
+                if (flightDate > endDate) return false;
+            }
+        }
+
+        return true;
+    });
+
     // Flights sorting
-    const sortedFlights = [...flights].sort((a, b) => {
+    const sortedFlights = [...filteredFlights].sort((a, b) => {
         let aValue = a[sortConfig.field];
         let bValue = b[sortConfig.field];
         
@@ -100,21 +157,71 @@ function FlightSchedule() {
         setCurrentPage(page);
     };
 
-    const handleSort = (field) => {
-        setSortConfig(prev => ({
-            field,
-            direction: prev.field === field && prev.direction === 'asc' ? 'desc' : 'asc'
-        }));
-        setCurrentPage(1); // Reset to first page when sorting
-    };
-
     const openSortModal = () => {
+        setTempSortConfig(sortConfig); // Initialize temp config with current config
         setShowSortModal(true);
     };
 
     const closeSortModal = () => {
         setShowSortModal(false);
     };
+
+    const handleSort = (field) => {
+        setTempSortConfig(prev => ({
+            field,
+            direction: prev.field === field && prev.direction === 'asc' ? 'desc' : 'asc'
+        }));
+    };
+
+    const applySort = () => {
+        setSortConfig(tempSortConfig);
+        setCurrentPage(1); // Reset to first page when sorting
+        closeSortModal();
+    };
+
+    const openFilterModal = () => {
+        setTempFilterConfig(filterConfig); // Initialize temp config with current config
+        setShowFilterModal(true);
+    };
+
+    const closeFilterModal = () => {
+        setShowFilterModal(false);
+    };
+
+    const handleFilterChange = (field, value) => {
+        setTempFilterConfig(prev => ({
+            ...prev,
+            [field]: value
+        }));
+    };
+
+    const handleRangeFilterChange = (rangeType, bound, value) => {
+        setTempFilterConfig(prev => ({
+            ...prev,
+            [rangeType]: {
+                ...prev[rangeType],
+                [bound]: value
+            }
+        }));
+    };
+
+    const clearFilters = () => {
+        setTempFilterConfig({
+            departureStation: '',
+            priceRange: { min: '', max: '' },
+            seatsRange: { min: '', max: '' },
+            dateRange: { start: '', end: '' }
+        });
+    };
+
+    const applyFilters = () => {
+        setFilterConfig(tempFilterConfig);
+        setCurrentPage(1); // Reset to first page when filtering
+        closeFilterModal();
+    };
+
+    // Get unique departure stations for filter dropdown
+    const uniqueStations = [...new Set(flights.map(flight => flight.departureStation))];
 
     // Generate page numbers to display
     const getPageNumbers = () => {
@@ -158,7 +265,7 @@ function FlightSchedule() {
                     <h2 className="flight-schedule__title heading-1">Flight Schedule</h2>
                     <div className="flight-schedule__buttons">
                         <button className="btn-table" onClick={openSortModal}>Sort</button>
-                        <button className="btn-table">Filter</button>
+                        <button className="btn-table" onClick={openFilterModal}>Filter</button>
                     </div>
                 </div>
                 <div className="flight-schedule__content">
@@ -310,13 +417,13 @@ function FlightSchedule() {
                                     {sortOptions.map((option) => (
                                         <div 
                                             key={option.field}
-                                            className={`sort-option ${sortConfig.field === option.field ? 'active' : ''}`}
+                                            className={`sort-option ${tempSortConfig.field === option.field ? 'active' : ''}`}
                                             onClick={() => handleSort(option.field)}
                                         >
                                             <span className="sort-option__label body-regular">{option.label}</span>
-                                            {sortConfig.field === option.field && (
+                                            {tempSortConfig.field === option.field && (
                                                 <span className="sort-option__direction">
-                                                    {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                                                    {tempSortConfig.direction === 'asc' ? '↑' : '↓'}
                                                 </span>
                                             )}
                                         </div>
@@ -324,8 +431,115 @@ function FlightSchedule() {
                                 </div>
                             </div>
                             <div className="sort-modal__footer">
-                                <button className="sort-modal__apply body-regular" onClick={closeSortModal}>
+                                <button className="sort-modal__apply body-regular" onClick={applySort}>
                                     Apply
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Filter Modal */}
+            <AnimatePresence>
+                {showFilterModal && (
+                    <motion.div 
+                        className="modal-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={closeFilterModal}
+                    >
+                        <motion.div 
+                            className="filter-modal"
+                            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="filter-modal__header">
+                                <h3 className="filter-modal__title body-large">Filter Flights</h3>
+                                <button className="filter-modal__close" onClick={closeFilterModal}>×</button>
+                            </div>
+                            <div className="filter-modal__content">
+                                <div className="filter-section">
+                                    <h4 className="filter-section__title body-regular">Departure Station</h4>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter station name..."
+                                        value={tempFilterConfig.departureStation}
+                                        onChange={(e) => handleFilterChange('departureStation', e.target.value)}
+                                        className="filter-input"
+                                    />
+                                </div>
+
+                                <div className="filter-section">
+                                    <h4 className="filter-section__title body-regular">Price Range</h4>
+                                    <div className="filter-range">
+                                        <input
+                                            type="number"
+                                            placeholder="Min price"
+                                            value={tempFilterConfig.priceRange.min}
+                                            onChange={(e) => handleRangeFilterChange('priceRange', 'min', e.target.value)}
+                                            className="filter-input"
+                                        />
+                                        <span className="filter-range__separator">-</span>
+                                        <input
+                                            type="number"
+                                            placeholder="Max price"
+                                            value={tempFilterConfig.priceRange.max}
+                                            onChange={(e) => handleRangeFilterChange('priceRange', 'max', e.target.value)}
+                                            className="filter-input"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="filter-section">
+                                    <h4 className="filter-section__title body-regular">Seats Available</h4>
+                                    <div className="filter-range">
+                                        <input
+                                            type="number"
+                                            placeholder="Min seats"
+                                            value={tempFilterConfig.seatsRange.min}
+                                            onChange={(e) => handleRangeFilterChange('seatsRange', 'min', e.target.value)}
+                                            className="filter-input"
+                                        />
+                                        <span className="filter-range__separator">-</span>
+                                        <input
+                                            type="number"
+                                            placeholder="Max seats"
+                                            value={tempFilterConfig.seatsRange.max}
+                                            onChange={(e) => handleRangeFilterChange('seatsRange', 'max', e.target.value)}
+                                            className="filter-input"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="filter-section">
+                                    <h4 className="filter-section__title body-regular">Launch Date Range</h4>
+                                    <div className="filter-range">
+                                        <input
+                                            type="date"
+                                            value={tempFilterConfig.dateRange.start}
+                                            onChange={(e) => handleRangeFilterChange('dateRange', 'start', e.target.value)}
+                                            className="filter-input"
+                                        />
+                                        <span className="filter-range__separator">-</span>
+                                        <input
+                                            type="date"
+                                            value={tempFilterConfig.dateRange.end}
+                                            onChange={(e) => handleRangeFilterChange('dateRange', 'end', e.target.value)}
+                                            className="filter-input"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="filter-modal__footer">
+                                <button className="filter-modal__clear body-regular" onClick={clearFilters}>
+                                    Clear All
+                                </button>
+                                <button className="filter-modal__apply body-regular" onClick={applyFilters}>
+                                    Apply Filters
                                 </button>
                             </div>
                         </motion.div>
