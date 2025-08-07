@@ -1,30 +1,37 @@
 export const flights = [
-    {
-        id: 1,
-        launchDate: "Aug 15, 2087",
-        departureStation: "Earth Orbital Station",
-        seatsLeft: 5,
-        price: 120
-    },
-    {
-        id: 2,
-        launchDate: "Nov 30, 2087",
-        departureStation: "Earth Spaceport Alpha",
-        seatsLeft: 12,
-        price: 105
-    },
-    {
-        id: 3,
-        launchDate: "Jan 10, 2088",
-        departureStation: "Earth Deep Launch",
-        seatsLeft: 8,
-        price: 130
-    },
-    {
-        id: 4,
-        launchDate: "Apr 22, 2088",
-        departureStation: "Earth Polar Platform",
-        seatsLeft: 3,
-        price: 115
-    }
+    { id: 1, launchDate: "Aug 15, 2087", departureStation: "Earth Orbital Station", seatsLeft: 5, price: 120 },
+    { id: 2, launchDate: "Nov 30, 2087", departureStation: "Earth Spaceport Alpha", seatsLeft: 12, price: 105 },
+    { id: 3, launchDate: "Jan 10, 2088", departureStation: "Earth Deep Launch", seatsLeft: 8, price: 130 },
+    { id: 4, launchDate: "Apr 22, 2088", departureStation: "Earth Polar Platform", seatsLeft: 3, price: 115 },
+    { id: 5, launchDate: "May 12, 2088", departureStation: "Earth Orbital Station", seatsLeft: 10, price: 140 },
+    { id: 6, launchDate: "Jun 18, 2088", departureStation: "Earth Spaceport Alpha", seatsLeft: 7, price: 200 },
+    { id: 7, launchDate: "Jul 25, 2088", departureStation: "Earth Deep Launch", seatsLeft: 15, price: 180 },
+    { id: 8, launchDate: "Aug 30, 2088", departureStation: "Earth Polar Platform", seatsLeft: 4, price: 250 },
+    { id: 9, launchDate: "Sep 14, 2088", departureStation: "Earth Orbital Station", seatsLeft: 9, price: 230 },
+    { id: 10, launchDate: "Oct 21, 2088", departureStation: "Earth Spaceport Alpha", seatsLeft: 6, price: 300 },
+    { id: 11, launchDate: "Nov 28, 2088", departureStation: "Earth Deep Launch", seatsLeft: 11, price: 270 },
+    { id: 12, launchDate: "Dec 15, 2088", departureStation: "Earth Polar Platform", seatsLeft: 2, price: 320 },
+    { id: 13, launchDate: "Jan 19, 2089", departureStation: "Earth Orbital Station", seatsLeft: 13, price: 125 },
+    { id: 14, launchDate: "Feb 23, 2089", departureStation: "Earth Spaceport Alpha", seatsLeft: 8, price: 110 },
+    { id: 15, launchDate: "Mar 29, 2089", departureStation: "Earth Deep Launch", seatsLeft: 5, price: 135 },
+    { id: 16, launchDate: "Apr 30, 2089", departureStation: "Earth Polar Platform", seatsLeft: 7, price: 120 },
+    { id: 17, launchDate: "May 15, 2089", departureStation: "Earth Orbital Station", seatsLeft: 6, price: 145 },
+    { id: 18, launchDate: "Jun 20, 2089", departureStation: "Earth Spaceport Alpha", seatsLeft: 14, price: 210 },
+    { id: 19, launchDate: "Jul 27, 2089", departureStation: "Earth Deep Launch", seatsLeft: 9, price: 185 },
+    { id: 20, launchDate: "Aug 31, 2089", departureStation: "Earth Polar Platform", seatsLeft: 3, price: 255 },
+    { id: 21, launchDate: "Sep 16, 2089", departureStation: "Earth Orbital Station", seatsLeft: 12, price: 235 },
+    { id: 22, launchDate: "Oct 22, 2089", departureStation: "Earth Spaceport Alpha", seatsLeft: 5, price: 310 },
+    { id: 23, launchDate: "Nov 29, 2089", departureStation: "Earth Deep Launch", seatsLeft: 8, price: 275 },
+    { id: 24, launchDate: "Dec 16, 2089", departureStation: "Earth Polar Platform", seatsLeft: 4, price: 325 },
+    { id: 25, launchDate: "Jan 20, 2090", departureStation: "Earth Orbital Station", seatsLeft: 10, price: 130 },
+    { id: 26, launchDate: "Feb 24, 2090", departureStation: "Earth Spaceport Alpha", seatsLeft: 7, price: 115 },
+    { id: 27, launchDate: "Mar 30, 2090", departureStation: "Earth Deep Launch", seatsLeft: 6, price: 140 },
+    { id: 28, launchDate: "May 1, 2090", departureStation: "Earth Polar Platform", seatsLeft: 11, price: 125 },
+    { id: 29, launchDate: "May 16, 2090", departureStation: "Earth Orbital Station", seatsLeft: 5, price: 150 },
+    { id: 30, launchDate: "Jun 21, 2090", departureStation: "Earth Spaceport Alpha", seatsLeft: 13, price: 220 },
+    { id: 31, launchDate: "Jul 28, 2090", departureStation: "Earth Deep Launch", seatsLeft: 8, price: 190 },
+    { id: 32, launchDate: "Sep 1, 2090", departureStation: "Earth Polar Platform", seatsLeft: 2, price: 260 },
+    { id: 33, launchDate: "Sep 17, 2090", departureStation: "Earth Orbital Station", seatsLeft: 10, price: 240 },
+    { id: 34, launchDate: "Oct 23, 2090", departureStation: "Earth Spaceport Alpha", seatsLeft: 7, price: 320 },
+    { id: 35, launchDate: "Nov 30, 2090", departureStation: "Earth Deep Launch", seatsLeft: 6, price: 280 }
 ];

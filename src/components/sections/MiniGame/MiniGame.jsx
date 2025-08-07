@@ -1,27 +1,8 @@
 import { useState, useEffect } from "react";
+import { solarSystemQuestions } from "../../../utils/mockdata/mini-game-questions";
 
 function MiniGame() {
-    const miniGameQuestions = [
-        {
-            question: "What is the biggest planet in solar system?",
-            question_time: 15,
-            answers: ["Earth", "Jupiter", "Saturn", "Mercury"],
-            correctAnswer: "Jupiter"
-        },
-        {
-            question: "Which planet is known as the Red Planet?",
-            question_time: 15,
-            answers: ["Earth", "Mars", "Venus", "Jupiter"],
-            correctAnswer: "Mars"
-        },
-        {
-            question: "What is the smallest planet in solar system?",
-            question_time: 15,
-            answers: ["Earth", "Mars", "Venus", "Mercury"],
-            correctAnswer: "Mercury"
-        }
-    ]
-
+    const [miniGameQuestions, setMiniGameQuestions] = useState([]);
     const [gameStarted, setGameStarted] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [chosenAnswers, setChosenAnswers] = useState([]);
@@ -102,7 +83,19 @@ function MiniGame() {
         setCurrentQuestion(prev => prev + 1);
     }
 
+    const getRandomQuestions = (arr, newArrLength = 10) => {
+        const randomQuestions = [];
+        while (randomQuestions.length < newArrLength) {
+            const randomIndex = Math.floor(Math.random() * arr.length);
+            if (!randomQuestions.includes(arr[randomIndex])) {
+                randomQuestions.push(arr[randomIndex]);
+            }
+        }
+        return randomQuestions;
+    }
+
     const startGame = () => {
+        setMiniGameQuestions(getRandomQuestions(solarSystemQuestions));
         setGameStarted(true);
         setCurrentQuestion(0);
         setChosenAnswers([]);
@@ -129,7 +122,7 @@ function MiniGame() {
                 {!gameStarted && chosenAnswers.length === 0 && (
                 <div className="mini-game__start-container">
                     <div className="mini-game__start-container-content">
-                        <button className="mini-game__start-button" onClick={startGame}>Start Game</button>
+                        <button className="mini-game__start-button body-large" onClick={startGame}>Start</button>
                     </div>
                 </div>
                 )}
@@ -173,7 +166,7 @@ function MiniGame() {
                 <div className="mini-game__score-container">
                     <div className="mini-game__score-container-content">
                         <p className="mini-game__score-text body-large">Your score: {score}/{miniGameQuestions.length}</p>
-                        <button className="mini-game__score-button" onClick={resetGame}>Play Again</button>
+                        <button className="mini-game__score-button body-regular" onClick={resetGame}>Play again</button>
                     </div>
                 </div>
                 )}

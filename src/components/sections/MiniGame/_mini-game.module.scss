@@ -24,6 +24,21 @@
         
             .mini-game__start-container-content{
                 margin-top: -3rem;
+
+                button{
+                    color: #fff;
+                    border-radius: 2rem;
+                    padding: 0.75rem 6rem;
+                    transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+                    border: 0.1rem solid #fff;
+
+                    
+                    &:hover{
+                        padding: 0.85rem 6.1rem;
+                        border: none;
+                        box-shadow: 0 0 1.58rem 0.4rem rgba(255, 255, 255, 0.75);
+                    }
+                }
             }
         }
 
@@ -171,6 +186,17 @@
 
                 .mini-game__score-button{
                     margin-top: 2rem;
+                    color: #fff;
+                    border-radius: 2rem;
+                    padding: 0.25rem 2rem;
+                    transition: box-shadow 0.2s ease-in-out, border 0.2s ease-in-out;
+                    border: 0.1rem solid #fff;
+
+                    &:hover{
+                        box-shadow: 0 0 1.58rem 0.4rem rgba(255, 255, 255, 0.75);
+                        padding: 0.35rem 2.1rem;
+                        border: none;
+                    }
                 }
             }
         }

@@ -5,6 +5,43 @@ import { flights } from '../../../utils/mockdata/flights-data';
 function FlightSchedule() {
     const [selectedFlights, setSelectedFlights] = useState([]);
     const [seatsPerFlight, setSeatsPerFlight] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
+    const [showSortModal, setShowSortModal] = useState(false);
+    const [sortConfig, setSortConfig] = useState({
+        field: 'launchDate',
+        direction: 'asc'
+    });
+    const flightsPerPage = 5;
+
+    // Flights sorting
+    const sortedFlights = [...flights].sort((a, b) => {
+        let aValue = a[sortConfig.field];
+        let bValue = b[sortConfig.field];
+        
+        if (sortConfig.field === 'launchDate') {
+            aValue = new Date(aValue);
+            bValue = new Date(bValue);
+        }
+        
+        if (sortConfig.field === 'price' || sortConfig.field === 'seatsLeft') {
+            aValue = Number(aValue);
+            bValue = Number(bValue);
+        }
+        
+        if (aValue < bValue) {
+            return sortConfig.direction === 'asc' ? -1 : 1;
+        }
+        if (aValue > bValue) {
+            return sortConfig.direction === 'asc' ? 1 : -1;
+        }
+        return 0;
+    });
+
+    // Pagination
+    const totalPages = Math.ceil(sortedFlights.length / flightsPerPage);
+    const startIndex = (currentPage - 1) * flightsPerPage;
+    const endIndex = startIndex + flightsPerPage;
+    const currentFlights = sortedFlights.slice(startIndex, endIndex);
 
     const handleFlightSelect = (flight) => {
         setSelectedFlights(prev => {
@@ -59,6 +96,60 @@ function FlightSchedule() {
         return selectedFlights.some(f => f.id === flightId);
     };
 
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const handleSort = (field) => {
+        setSortConfig(prev => ({
+            field,
+            direction: prev.field === field && prev.direction === 'asc' ? 'desc' : 'asc'
+        }));
+        setCurrentPage(1); // Reset to first page when sorting
+    };
+
+    const openSortModal = () => {
+        setShowSortModal(true);
+    };
+
+    const closeSortModal = () => {
+        setShowSortModal(false);
+    };
+
+    // Generate page numbers to display
+    const getPageNumbers = () => {
+        const pages = [];
+        const maxVisiblePages = 10;
+        
+        if (totalPages <= maxVisiblePages) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            if (currentPage <= 5) {
+                for (let i = 1; i <= 10; i++) {
+                    pages.push(i);
+                }
+            } else if (currentPage >= totalPages - 4) {
+                for (let i = totalPages - 9; i <= totalPages; i++) {
+                    pages.push(i);
+                }
+            } else {
+                for (let i = currentPage - 4; i <= currentPage + 5; i++) {
+                    pages.push(i);
+                }
+            }
+        }
+        return pages;
+    };
+
+    const sortOptions = [
+        { field: 'launchDate', label: 'Launch Date' },
+        { field: 'departureStation', label: 'Departure Station' },
+        { field: 'seatsLeft', label: 'Seats Left' },
+        { field: 'price', label: 'Price' }
+    ];
+
     return (
         <section className="flight-schedule" id="flights-schedule-section">
             <div className="flight-schedule__container">
@@ -66,7 +157,7 @@ function FlightSchedule() {
                     <div>&nbsp;</div>
                     <h2 className="flight-schedule__title heading-1">Flight Schedule</h2>
                     <div className="flight-schedule__buttons">
-                        <button className="btn-table">Sort</button>
+                        <button className="btn-table" onClick={openSortModal}>Sort</button>
                         <button className="btn-table">Filter</button>
                     </div>
                 </div>
@@ -82,7 +173,7 @@ function FlightSchedule() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {flights.map((flight) => (
+                                {currentFlights.map((flight) => (
                                     <tr 
                                         key={flight.id}
                                         className={isFlightSelected(flight.id) ? 'selected' : ''}
@@ -100,17 +191,15 @@ function FlightSchedule() {
 
                     <div className="flight-schedule__pagination">
                         <div className="pagination-controls">
-                            <span className="page active">1</span>
-                            <span className="page">2</span>
-                            <span className="page">3</span>
-                            <span className="page">4</span>
-                            <span className="page">5</span>
-                            <span className="page">6</span>
-                            <span className="page">7</span>
-                            <span className="page">8</span>
-                            <span className="page">9</span>
-                            <span className="page">10</span>
-                            <span className="next">Next</span>
+                            {getPageNumbers().map((page) => (
+                                <span 
+                                    key={page}
+                                    className={`page ${page === currentPage ? 'active' : ''}`}
+                                    onClick={() => handlePageChange(page)}
+                                >
+                                    {page}
+                                </span>
+                            ))}
                         </div>
                     </div>
                     
@@ -192,9 +281,57 @@ function FlightSchedule() {
                             </motion.div>
                         )}
                     </AnimatePresence>
-                
                 </div>
             </div>
+
+            {/* Sort Modal */}
+            <AnimatePresence>
+                {showSortModal && (
+                    <motion.div 
+                        className="modal-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={closeSortModal}
+                    >
+                        <motion.div 
+                            className="sort-modal"
+                            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="sort-modal__header">
+                                <h3 className="sort-modal__title body-large">Sort Flights</h3>
+                                <button className="sort-modal__close" onClick={closeSortModal}>×</button>
+                            </div>
+                            <div className="sort-modal__content">
+                                <div className="sort-options">
+                                    {sortOptions.map((option) => (
+                                        <div 
+                                            key={option.field}
+                                            className={`sort-option ${sortConfig.field === option.field ? 'active' : ''}`}
+                                            onClick={() => handleSort(option.field)}
+                                        >
+                                            <span className="sort-option__label body-regular">{option.label}</span>
+                                            {sortConfig.field === option.field && (
+                                                <span className="sort-option__direction">
+                                                    {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                                                </span>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="sort-modal__footer">
+                                <button className="sort-modal__apply body-regular" onClick={closeSortModal}>
+                                    Apply
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     )
 }

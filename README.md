@@ -93,8 +93,8 @@ sst-react-web-app/
 - [x] Planet selection interface with interactive icons
 - [x] Planet detail cards with information display
 - [ ] Flight schedule table with sorting and filtering
-- [ ] Booking system with seat selection and pricing
-- [ ] Image gallery with space-themed photos
+- [x] Booking system with seat selection and pricing
+- [x] Image gallery with space-themed photos
 - [ ] Planet knowledge quiz
 - [ ] Responsive design for mobile and desktop
 
